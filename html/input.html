@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="format-detection" content="email=yes" />
+    <meta name="Keywords" content=""/>
+    <meta name="Description" content=""/>
+    <style type="text/css">
+    div{
+        line-height: 40px;
+    }
+    div input{
+        vertical-align: middle;
+    }
+    </style>
+</head>
+<body>
+    <a href="./index.html">首页</a>
+    <div>
+        <p>18500098765</p>
+        <p>zhongjian.zhou@dianping.com</p>
+    </div>
+    <form>
+        <div>
+            <input type="text" placeholder="text">
+            <input type="submit" class="" value="submit">
+        </div>
+    </form>
+    <form>
+        <div>
+            <input type="number" placeholder="text">
+            <input type="submit" class="" value="submit">
+        </div>
+    </form>
+    <form>
+        <div>
+            <input type="text" placeholder="text">
+            <input type="text" placeholder="text">
+            <input type="submit" class="" value="submit">
+        </div>
+    </form>
+
+    <div>
+        <input type="email" placeholder="email">
+        <input type="button" class="J_get_val" value="click">
+    </div>
+    <div>
+        <input type="url" placeholder="url">
+        <input type="button" class="J_get_val" value="click">
+    </div>
+    <div>
+        <input type="tel" placeholder="tel">
+        <input type="button" class="J_get_val" value="click">
+    </div>
+    <div>
+        <input type="number" placeholder="number">
+        <input type="button" class="J_get_val" value="click">
+    </div>
+    <div>
+        <input type="date" placeholder="date">
+        <input type="button" class="J_get_val" value="click">
+    </div>
+    <div>
+        <input type="time" placeholder="time">
+        <input type="button" class="J_get_val" value="click">
+    </div>
+    <div>
+        <input type="month" placeholder="month">
+        <input type="button" class="J_get_val" value="click">
+    </div>
+
+    <script src="../js/zepto.js"></script>
+    <script type="text/javascript">
+        $(document).on('click', '.J_get_val', function(e) {
+            alert($(e.target).siblings().eq(0).val());
+        });
+    </script>
+</body>
+</html>

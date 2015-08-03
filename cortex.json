@@ -1,0 +1,24 @@
+{
+  "name": "mobile-dev",
+  "version": "0.1.0",
+  "description": "The coolest cortex module.",
+  "main": "index.js",
+  "devDependencies": {
+    "assert": "*"
+  },
+  "dependencies": {},
+  "repository": "git://github.com/zhouzj/mobile-dev.git",
+  "keywords": [
+    "mobile",
+    "dev"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "zhongjian.zhou",
+    "email": "zhongjian.zhou@dianpaing.com"
+  },
+  "bugs": {
+    "url": "http://github.com/zhouzj/mobile-dev/issues"
+  },
+  "homepage": "http://github.com/zhouzj/mobile-dev"
+}
