@@ -102,3 +102,45 @@ var p3 = new Promise();
 Promise.all([p1,p2,p3]).then(function(posts) {
     console.log(posts);
 });
+
+dpmerchant.ready(function() {
+    dpmerchant.subscribe({
+        action: 'appear',
+        success: function() {
+            dpmerchant.store({
+                key: 'shopmenu',
+                value: 'false'
+            });
+        },
+        handle: function(e) {
+            dpmerchant.setTitle({
+                title: document.title,
+                subtitle: '在线上架菜品'
+            });
+            dpmerchant.setRRButton({
+                text: "全部菜品",
+                handle: function() {
+                    Envtool.openScheme({
+                        url: 'dpmer://newweb',
+                        extra: {
+                            url: 'http://' + location.host + '/mhobbit/alldish'
+                        }
+                    });
+                }
+            });
+            dpmerchant.retrieve({
+                key: 'shopmenu',
+                success: function(e) {
+                    if (e && e.value === 'reload') {
+                        dpmerchant.unsubscribe({
+                            action: 'appear',
+                            success: function(e) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    });
+});
