@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="Keywords" content=""/>
+    <meta name="Description" content=""/>
+
+    <style type="text/css">
+        body{
+            line-height: 1.5;
+        }
+    </style>
+    <style type="text/css">
+
+    html { font-size: 62.5%; } /* 16px - 10/16*100% */
+    body { font-size: 14px; font-size: 1.4rem; } /* 14px */
+    h1 { font-size: 28px; font-size: 2.8rem; } /* 24px */
+    h2 { font-size: 24px; font-size: 2.4rem; } /* 24px */
+    h3 { font-size: 20px; font-size: 2.0rem; } /* 24px */
+
+    /* default state */
+    .state-indicator {
+        position: absolute;
+        top: -999em;
+        left: -999em;
+        z-index: 1;
+    }
+
+    /* small desktop */
+    @media all and (max-width: 1200px) {
+        .state-indicator {
+            z-index: 2;
+        }
+    }
+
+    /* tablet */
+    @media all and (max-width: 1024px) {
+        .state-indicator {
+            z-index: 3;
+        }
+    }
+
+    /* mobile phone */
+    @media all and (max-width: 768px) {
+        .state-indicator {
+            z-index: 4;
+        }
+    }
+    </style>
+</head>
+<body>
+    <a href="./index.html">首页</a>
+
+    <h1>h1</h1>
+    <h2>h2</h2>
+    <h3>h3</h3>
+    <ol>
+        <li><a href="../less/lib/reset.txt" target="_blank">reset的一些属性</a></li>
+        <li><a href="../less/lib/preset.txt" target="_blank">preset</a></li>
+        <li>px vs em</li>
+        <li>media query</li>
+    </ol>
+
+    <script type="text/javascript">
+        var mql = window.matchMedia("(orientation: portrait)");
+        mql.addListener(handleOrientationChange);
+        function handleOrientationChange(mql) {
+            if (mql.matches) {
+                alert('The device is currently in portrait orientation ')
+            } else {
+                alert('The device is currently in landscape orientation')
+            }
+        }
+
+        // Create the state-indicator element
+        var indicator = document.createElement('div');
+        indicator.className = 'state-indicator';
+        document.body.appendChild(indicator);
+
+        // Create a method which returns device state
+        function getDeviceState() {
+            switch(parseInt(window.getComputedStyle(indicator).getPropertyValue('z-index'), 10)) {
+                case 2:
+                    return 'small-desktop';
+                    break;
+                case 3:
+                    return 'tablet';
+                    break;
+                case 4:
+                    return 'phone';
+                    break;
+                default:
+                    return 'desktop';
+                    break;
+            }
+        }
+        // if(getDeviceState() === 'desktop') {
+        //     alert('desktop');
+        // }
+        // if(getDeviceState() === 'tablet') {
+        //     alert('tablet');
+        // }
+        // if(getDeviceState() === 'phone') {
+        //     alert('phone');
+        // }
+
+    </script>
+</body>
+</html>

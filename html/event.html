@@ -9,18 +9,66 @@
     <meta name="Keywords" content=""/>
     <meta name="Description" content=""/>
     <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            line-height: 1.5
+        }
+        *:not(input,textarea) {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+        }
+        nav{
+            display: block;
+            height: 40px;
+            line-height: 40px;
+            background-color: #ddd;
+            width: 100%;
+            /*-webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            transform: translateZ(0);*/
+        }
+        .fix-top{
+            position: fixed;
+            top: 0;
+        }
         li{
             /*cursor: pointer;*/
+        }
+        .hover{
+            background-color: #f00;
+        }
+        a {
+            color: #000;
+        }
+        a:active {
+            color: #fff;
         }
     </style>
 </head>
 <body>
     <a href="./index.html">首页</a>
     <ol>
-        <li>click事件的300ms延迟（android 4.4-）</li>
-        <li>touch</li>
-        <li></li>
+        <li>click事件的300ms延迟</li>
+        <li>touch事件</li>
+        <li>orientationchange</li>
+        <li>scroll</li>
+        <li>键盘收起？</li>
+        <li>浏览器后退</li>
     </ol>
+
+    <nav class="">
+        scroll to fix
+    </nav>
+    <p class="J_nav_holder"></p>
+
+    <hr>
+    <a href="javascript:;">link 1 link 1 link 1 link 1 </a><br>
+    <a href="javascript:;">link 2 link 2 link 2 link 2 </a><br>
+    <a href="javascript:;">link 3 link 3 link 3 link 3 </a>
+
+    <hr>
+    <div style="height:2000px;"></div>
 
 
     <script src="../js/zepto.js"></script>
@@ -28,6 +76,36 @@
         $(document).on('click', 'li', function (e) {
             alert($(e.target).html());
         });
+
+        scrollFixTop();
+        $(document).on('scroll', scrollFixTop);
+        // $(document).on('touchmove', scrollFixTop);
+
+        function scrollFixTop() {
+            var scrollTop = $(window).scrollTop();
+            var nav = $('nav');
+            var navOffsetTop = $('.J_nav_holder').offset().top;
+            if(scrollTop > navOffsetTop) {
+                nav.addClass('fix-top');
+            } else {
+                nav.removeClass('fix-top');
+            }
+        }
+
+        var myLinks = document.getElementsByTagName('a');
+        for(var i = 0; i < myLinks.length; i++){
+        　　myLinks[i].addEventListener('touchstart', function(){this.className = 'hover';}, false);
+        　　myLinks[i].addEventListener('touchend', function(){this.className = '';}, false);
+        }
+        for(var i=0;i<myLinks.length;i++){
+            myLinks[i].addEventListener('touchstart',function(){},false);
+        }
+
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                alert("From back / forward cache.");
+            }
+        };
     </script>
 </body>
 </html>

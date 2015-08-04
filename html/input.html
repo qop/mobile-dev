@@ -10,23 +10,50 @@
     <meta name="Description" content=""/>
     <style type="text/css">
     div{
-        line-height: 40px;
+        line-height: 50px;
     }
     div input{
         vertical-align: middle;
+    }
+    .btn-container{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: #fff;
+        border-top: 1px solid #e1e1e1;
+    }
+    .btn-container a{
+        margin: 10px;
+        text-align: center;
+        font-size: 16px;
+        height: 44px;
+        line-height: 44px;
+        color: #fff;
+        background-color: #f63;
+        border-radius: 4px;
+        display: block;
     }
     </style>
 </head>
 <body>
     <a href="./index.html">首页</a>
-    <div>
-        <p>18500098765</p>
-        <p>zhongjian.zhou@dianping.com</p>
-    </div>
+
+    <hr>
+    <a href="https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html" target="_blank">referance</a>
+    <a href="https://miketaylr.com/code/input-type-attr.html">另一个demo</a>
+    <hr>
     <form>
         <div>
             <input type="text" placeholder="text">
             <input type="submit" class="" value="submit">
+        </div>
+    </form>
+    <form>
+        <div>
+            <input type="text" placeholder="text">
+            <input type="button" class="" value="button">
         </div>
     </form>
     <form>
@@ -39,9 +66,26 @@
         <div>
             <input type="text" placeholder="text">
             <input type="text" placeholder="text">
+            <input type="button" class="" value="button">
+        </div>
+    </form>
+    <form>
+        <div>
+            <input type="text" placeholder="text">
+            <input type="text" placeholder="text">
             <input type="submit" class="" value="submit">
         </div>
     </form>
+
+    <hr>
+    <div>
+        <input type="text" autocapitalize="false" autocorrect="false">
+        <input type="button" class="J_get_val" value="click">
+    </div>
+    <div>
+        <input type="text">
+        <input type="button" class="J_get_val" value="click">
+    </div>
 
     <div>
         <input type="email" placeholder="email">
@@ -72,10 +116,46 @@
         <input type="button" class="J_get_val" value="click">
     </div>
 
-    <script src="../js/zepto.js"></script>
+    <hr>
+
+    <div>
+        <input type="text" pattern="\d*">
+        <input type="button" class="J_get_val" value="click">
+    </div>
+    <div>
+        <input type="number">
+        <input type="button" class="J_get_val" value="click">
+    </div>
+
+    <hr>
+
+    <div>
+        <input type="file">
+    </div>
+
+    <br>
+
+    <div>键盘带来的布局问题</div>
+
+    <div style="height: 800px;"></div>
+
+    <div style="margin-bottom: 64px;">
+        <input type="text" placeholder="text">
+    </div>
+    <div class="btn-container">
+        <a>提交</a>
+    </div>
+
+    <script src="../../js/zepto.js"></script>
     <script type="text/javascript">
         $(document).on('click', '.J_get_val', function(e) {
             alert($(e.target).siblings().eq(0).val());
+        });
+
+        $(document).on('resize', function() {
+            // setTimeout(function() {
+            //     alert('resize');
+            // }, 1000);
         });
     </script>
 </body>
